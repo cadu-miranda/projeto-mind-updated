@@ -6,7 +6,7 @@ function Header() {
     <>
       <header className="header">
         <h1>
-          <a href="/">PSEL 2021 - Mind Consulting</a>
+          <a href="/">Projeto - Mind Consulting</a>
         </h1>
       </header>
     </>
