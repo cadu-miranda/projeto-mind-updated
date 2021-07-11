@@ -8,6 +8,7 @@ import {
   faUser,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import InputMask from "react-input-mask";
 import "./SignUp.css";
 
 class SignUp extends React.Component {
@@ -61,14 +62,19 @@ class SignUp extends React.Component {
                 <strong>CPF</strong>
               </label>
               <div className="custom-wrapper">
-                <input
-                  type="text"
-                  placeholder="Digite seu CPF"
-                  name="cpf"
+                <InputMask
+                  mask="999.999.999-99"
                   value={this.state.cpf}
                   onChange={this.handleChange}
-                  id="signUpCPF"
-                />
+                >
+                  {() => (
+                    <input
+                      type="text"
+                      id="signUpCPF"
+                      placeholder="Digite seu CPF"
+                    />
+                  )}
+                </InputMask>
                 <FontAwesomeIcon
                   icon={faIdCard}
                   className="input-icon"
