@@ -59,7 +59,7 @@ const UserTable = () => {
                   }}
                   className="button"
                   variant="contained"
-                  color="primary"
+                  color="error"
                   href="#contained-buttons"
                 >
                   Excluir
