@@ -22,11 +22,14 @@ class SignUp extends React.Component {
     this.setState({});
   }
   handleSubmit(event) {
+    const porta = 3333;
+    const baseUrl = `http://localhost:${porta}`;
+
     event.preventDefault();
 
     const data = new FormData(event.target);
 
-    fetch("http://localhost:3333/users", {
+    fetch(`${baseUrl}/users`, {
       method: "post",
       body: data,
     });
@@ -145,7 +148,7 @@ class SignUp extends React.Component {
                 <input
                   required
                   type="text"
-                  placeholder="Coloque seu avatar"
+                  placeholder="Cole aqui seu avatar"
                   name="avatar"
                   onChange={this.handleChange.bind(this)}
                   id="signUpConfirmPassword"
