@@ -8,25 +8,27 @@ import {
   faUser,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import InputMask from "react-input-mask";
 import "./SignUp.css";
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {},
-    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({});
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.value);
+
+    const data = new FormData(event.target);
+
+    fetch("http://localhost:3333/users", {
+      method: "post",
+      body: data,
+    });
   }
 
   render() {
@@ -47,8 +49,7 @@ class SignUp extends React.Component {
                   type="text"
                   placeholder="Digite seu nome completo"
                   name="name"
-                  value={this.state.name}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange.bind(this)}
                   id="signUpName"
                 />
                 <FontAwesomeIcon
@@ -62,19 +63,14 @@ class SignUp extends React.Component {
                 <strong>CPF</strong>
               </label>
               <div className="custom-wrapper">
-                <InputMask
-                  mask="999.999.999-99"
-                  value={this.state.cpf}
-                  onChange={this.handleChange}
-                >
-                  {() => (
-                    <input
-                      type="text"
-                      id="signUpCPF"
-                      placeholder="Digite seu CPF"
-                    />
-                  )}
-                </InputMask>
+                <input
+                  type="text"
+                  maxLength="11"
+                  placeholder="Digite seu CPF"
+                  name="cpf"
+                  onChange={this.handleChange.bind(this)}
+                  id="signUpCPF"
+                />
                 <FontAwesomeIcon
                   icon={faIdCard}
                   className="input-icon"
@@ -90,8 +86,7 @@ class SignUp extends React.Component {
                   type="email"
                   placeholder="Digite seu e-mail"
                   name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange.bind(this)}
                   id="signUpEmail"
                 />
                 <FontAwesomeIcon
@@ -109,8 +104,7 @@ class SignUp extends React.Component {
                   type="password"
                   placeholder="Digite sua senha"
                   name="password"
-                  value={this.state.name}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange.bind(this)}
                   id="signUpPassword"
                 />
                 <FontAwesomeIcon
@@ -128,8 +122,7 @@ class SignUp extends React.Component {
                   type="password"
                   placeholder="Confirme sua senha"
                   name="password-confirm"
-                  value={this.state.name}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange.bind(this)}
                   id="signUpConfirmPassword"
                 />
                 <FontAwesomeIcon
@@ -141,9 +134,7 @@ class SignUp extends React.Component {
               {""}
             </div>
             <button>
-              <a href="/">
-                <strong>REGISTRAR-SE</strong>
-              </a>
+              <strong>REGISTRAR-SE</strong>
             </button>
             <button>
               <a href="/">
