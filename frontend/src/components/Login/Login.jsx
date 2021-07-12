@@ -12,9 +12,7 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      value: {},
-    };
+    this.state = {};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -41,6 +39,7 @@ class Login extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="text"
                   placeholder="Digite seu e-mail ou CPF"
                   name="name"
@@ -60,6 +59,7 @@ class Login extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="password"
                   placeholder="Digite sua senha"
                   name="password"

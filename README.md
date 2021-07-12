@@ -1,6 +1,5 @@
 # Projeto - Mind Consulting
 
-O projeto foi realizado com o backend em AdonisJS, acessando um banco de dados MySQL. Para o frontend utilizou-se do ReactJS.
-Necessária a criação de um schema no MySQL chamada "users".
+## CRUD para gerenciar uma dashboard de usuários. Necessária a criação de um schema no MySQL chamada "users".
 
-## Instruções de uso - Para rodar o backend, digitar no terminal: "cd backend/ -> yarn dev". Para rodar o frontend, digitar no terminal: "cd frontend/ -> npm start"
+O projeto foi realizado com o backend em AdonisJS v5.1.0, acessando um banco de dados MySQL v8.0.25. Para o frontend utilizou-se do ReactJS v17.0.2.

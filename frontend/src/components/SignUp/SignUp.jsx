@@ -5,6 +5,7 @@ import {
   faCheckCircle,
   faIdCard,
   faKey,
+  faPortrait,
   faUser,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -46,6 +47,7 @@ class SignUp extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="text"
                   placeholder="Digite seu nome completo"
                   name="name"
@@ -64,6 +66,7 @@ class SignUp extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="text"
                   maxLength="11"
                   placeholder="Digite seu CPF"
@@ -83,6 +86,7 @@ class SignUp extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="email"
                   placeholder="Digite seu e-mail"
                   name="email"
@@ -101,6 +105,7 @@ class SignUp extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="password"
                   placeholder="Digite sua senha"
                   name="password"
@@ -119,6 +124,7 @@ class SignUp extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  required
                   type="password"
                   placeholder="Confirme sua senha"
                   name="password-confirm"
@@ -127,6 +133,25 @@ class SignUp extends React.Component {
                 />
                 <FontAwesomeIcon
                   icon={faCheckCircle}
+                  className="input-icon"
+                  transform="up-2 right-5"
+                />
+              </div>
+              {""}
+              <label htmlFor="avatar">
+                <strong>Avatar</strong>
+              </label>
+              <div className="custom-wrapper">
+                <input
+                  required
+                  type="text"
+                  placeholder="Coloque seu avatar"
+                  name="avatar"
+                  onChange={this.handleChange.bind(this)}
+                  id="signUpConfirmPassword"
+                />
+                <FontAwesomeIcon
+                  icon={faPortrait}
                   className="input-icon"
                   transform="up-2 right-5"
                 />
