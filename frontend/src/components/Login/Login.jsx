@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
 import "./Login.css";
 
 class Login extends React.Component {
@@ -26,7 +27,10 @@ class Login extends React.Component {
       body: data,
     })
       .then((res) => res.json())
-      .then((jsonData) => console.log(jsonData));
+      .then((jsonData) => console.log(jsonData.user))
+      .then(() => {
+        window.location.href = "http://localhost:3000/users";
+      });
   }
 
   render() {
