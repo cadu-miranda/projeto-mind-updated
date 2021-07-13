@@ -4,26 +4,31 @@ import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
 
 class Login extends React.Component {
-  redirectToSignUp = () => {
-    const { history } = this.props;
-
-    history.push("./signup");
-  };
-
   constructor(props) {
     super(props);
-    this.state = {};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({});
   }
   handleSubmit(event) {
-    console.log(this.state.value);
+    const porta = 3333;
+    const baseUrl = `http://localhost:${porta}`;
+
     event.preventDefault();
+
+    const data = new FormData(event.target);
+
+    fetch(`${baseUrl}/login`, {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((jsonData) => console.log(jsonData));
   }
+
   render() {
     return (
       <>
@@ -34,17 +39,16 @@ class Login extends React.Component {
           </div>
           <div className="form-container">
             <div className="container">
-              <label htmlFor="name">
+              <label htmlFor="email">
                 <strong>Login</strong>
               </label>
               <div className="custom-wrapper">
                 <input
+                  onChange={this.handleChange.bind(this)}
                   required
                   type="text"
                   placeholder="Digite seu e-mail ou CPF"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.handleChange}
+                  name="email"
                   id="loginInput"
                 />
                 <FontAwesomeIcon
@@ -59,12 +63,11 @@ class Login extends React.Component {
               </label>
               <div className="custom-wrapper">
                 <input
+                  onChange={this.handleChange.bind(this)}
                   required
                   type="password"
                   placeholder="Digite sua senha"
                   name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
                   id="passwordInput"
                 />
                 <FontAwesomeIcon
@@ -76,9 +79,7 @@ class Login extends React.Component {
               {""}
             </div>
             <button>
-              <a href="/users">
-                <strong>ENTRAR</strong>
-              </a>
+              <strong>ENTRAR</strong>
             </button>
             <button>
               <a href="/signup">

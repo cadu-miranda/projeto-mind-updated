@@ -22,10 +22,8 @@ export default class User extends BaseModel {
   @column()
   public avatar: string
 
-
   @column()
   public acess_level: string
-
 
   @column()
   public cpf: string

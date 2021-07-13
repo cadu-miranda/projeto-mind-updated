@@ -148,7 +148,7 @@ class SignUp extends React.Component {
                 <input
                   required
                   type="text"
-                  placeholder="Cole aqui seu avatar"
+                  placeholder="Coloque seu avatar"
                   name="avatar"
                   onChange={this.handleChange.bind(this)}
                   id="signUpConfirmPassword"

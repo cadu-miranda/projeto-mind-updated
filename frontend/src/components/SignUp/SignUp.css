@@ -48,13 +48,12 @@ button {
   color: white;
   padding: 14px 0;
   margin-top: 20px;
-  margin-left: 10px;
   border: none;
   cursor: pointer;
   width: 40%;
   border-radius: 3px;
   transition: 0.4s;
-  margin-bottom: 30px;
+  margin-left: 10px;
 }
 
 button:hover {
@@ -104,4 +103,8 @@ h1 {
 
 .custom-wrapper {
   position: relative;
+}
+
+button {
+  margin-bottom: 30px;
 }
