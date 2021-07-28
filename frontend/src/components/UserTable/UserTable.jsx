@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./UserTable.css";
 
-const UserTable = () => {
+export default function UserTable() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -215,6 +215,4 @@ const UserTable = () => {
       ))}
     </>
   );
-};
-
-export default UserTable;
+}

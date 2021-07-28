@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
 
-class Login extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -93,5 +93,3 @@ class Login extends React.Component {
     );
   }
 }
-
-export default Login;

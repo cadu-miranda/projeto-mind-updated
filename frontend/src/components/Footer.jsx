@@ -3,7 +3,7 @@ import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-function Footer() {
+export default function Footer() {
   return (
     <>
       <footer className="footer">
@@ -19,5 +19,3 @@ function Footer() {
     </>
   );
 }
-
-export default Footer;

@@ -57,6 +57,10 @@ input:focus {
   margin-left: 10px;
 }
 
+.button strong {
+  font-size: 14px;
+}
+
 .button:hover {
   width: 50%;
   transition: 0.4s;

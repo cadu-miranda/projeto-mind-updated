@@ -50,6 +50,10 @@ img {
   margin-left: 20px;
 }
 
+.button strong {
+  font-size: 14px;
+}
+
 .button {
   display: inline-block;
   background: #0f2027;

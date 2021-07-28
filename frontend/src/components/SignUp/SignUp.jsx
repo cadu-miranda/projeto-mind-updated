@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./SignUp.css";
 
-class SignUp extends React.Component {
+export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -173,5 +173,3 @@ class SignUp extends React.Component {
     );
   }
 }
-
-export default SignUp;
