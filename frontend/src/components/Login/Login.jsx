@@ -81,14 +81,12 @@ class Login extends React.Component {
               </div>
               {""}
             </div>
-            <button>
+            <a href="/users" className="button">
               <strong>ENTRAR</strong>
-            </button>
-            <button>
-              <a href="/signup">
-                <strong>REGISTRAR-SE</strong>
-              </a>
-            </button>
+            </a>
+            <a href="/signup" className="button">
+              <strong>REGISTRAR-SE</strong>
+            </a>
           </div>
         </form>
       </>

@@ -41,22 +41,22 @@ input:focus {
   margin-top: 25px;
 }
 
-button {
+.button {
+  display: inline-block;
   background: #0f2027;
   background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
   background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
   color: white;
   padding: 14px 0;
-  margin-top: 20px;
-  border: none;
   cursor: pointer;
   width: 40%;
   border-radius: 3px;
   transition: 0.4s;
   margin-left: 10px;
+  margin-bottom: 20px;
 }
 
-button:hover {
+.button:hover {
   width: 50%;
   transition: 0.4s;
   opacity: 0.8;

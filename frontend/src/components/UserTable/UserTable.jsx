@@ -143,12 +143,12 @@ const UserTable = () => {
           </div>
           {""}
         </div>
-        <button>
+        <a className="button" href>
           <strong>CONFIRMAR</strong>
-        </button>
-        <button>
+        </a>
+        <a className="button" href>
           <strong>CANCELAR</strong>
-        </button>
+        </a>
       </div>
       {users.map((u) => (
         <table id="users">

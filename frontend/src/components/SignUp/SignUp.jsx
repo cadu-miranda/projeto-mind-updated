@@ -148,7 +148,7 @@ class SignUp extends React.Component {
                 <input
                   required
                   type="text"
-                  placeholder="Coloque seu avatar"
+                  placeholder="Cole aqui seu avatar"
                   name="avatar"
                   onChange={this.handleChange.bind(this)}
                   id="signUpConfirmPassword"
@@ -161,14 +161,12 @@ class SignUp extends React.Component {
               </div>
               {""}
             </div>
-            <button>
+            <a href="/signup" className="button">
               <strong>REGISTRAR-SE</strong>
-            </button>
-            <button>
-              <a href="/">
-                <strong>LOGIN</strong>
-              </a>
-            </button>
+            </a>
+            <a href="/" className="button">
+              <strong>LOGIN</strong>
+            </a>
           </div>
         </form>
       </>
