@@ -1,6 +1,6 @@
 # Projeto - Mind Consulting
 
-## CRUD para Gerenciamento de Dashboard para Usuários.
+## CRUD para Gerenciamento de Dashboard para Usuários
 
 ```bash
 Para rodar o backend: yarn add && yarn dev
