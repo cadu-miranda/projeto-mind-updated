@@ -1,4 +1,4 @@
-# PSEL 2021 - Mind Consulting
+# Projeto para PSEL 2021 - Mind Consulting
 
 ## Dashboard para Gerenciamento de Usuários
 
