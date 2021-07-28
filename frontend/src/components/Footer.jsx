@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
       <footer className="footer">
-        Deselvolvido com{" "}
+        Desenvolvido com{" "}
         <FontAwesomeIcon
           icon={faHeart}
           color="red"

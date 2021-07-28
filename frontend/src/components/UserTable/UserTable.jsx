@@ -19,7 +19,7 @@ export default function UserTable() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    api.get("users").then((res) => {
+    api.get("/users").then((res) => {
       setUsers(res.data);
       console.log(res.data);
     });
