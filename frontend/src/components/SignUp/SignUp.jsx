@@ -161,9 +161,9 @@ export default class SignUp extends React.Component {
               </div>
               {""}
             </div>
-            <a href="/signup" className="button">
+            <button href="/signup" className="button">
               <strong>REGISTRAR-SE</strong>
-            </a>
+            </button>
             <a href="/" className="button">
               <strong>LOGIN</strong>
             </a>

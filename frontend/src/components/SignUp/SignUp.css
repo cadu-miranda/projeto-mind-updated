@@ -15,7 +15,7 @@ input[type="password"],
 input[type="email"] {
   width: 100%;
   padding: 16px 8px;
-  margin: 8px 0;
+  margin: 8px 0px;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -47,7 +47,7 @@ input:focus {
   background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
   background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
   color: white;
-  padding: 14px 0;
+  padding: 14px 0px;
   cursor: pointer;
   width: 40%;
   border-radius: 3px;
@@ -68,7 +68,7 @@ input:focus {
 
 h1 {
   text-align: center;
-  font-size: 18;
+  font-size: 32px;
   margin-top: 5px;
   transition: 0.4s;
 }
