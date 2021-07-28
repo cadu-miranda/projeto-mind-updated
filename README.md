@@ -1,6 +1,6 @@
-# Projeto - Mind Consulting
+# PSEL 2021 - Mind Consulting
 
-## CRUD para Gerenciamento de Dashboard para Usuários
+## Dashboard para Gerenciamento de Usuários
 
 ```bash
 Para rodar o backend: yarn add && yarn dev
