@@ -133,10 +133,10 @@ export default function Login() {
             </CustomWrapper>
           </Container>
           <Button type="submit">
-            <ButtonText>ENTRAR</ButtonText>
+            <ButtonText>Login</ButtonText>
           </Button>
           <ButtonLink href="/signup">
-            <ButtonText>CADASTRE-SE</ButtonText>
+            <ButtonText>Cadastre-se</ButtonText>
           </ButtonLink>
         </FormContainer>
       </Form>

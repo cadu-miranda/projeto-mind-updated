@@ -79,7 +79,7 @@ export default function SignUp() {
         cpf,
         email,
         password,
-        avatarLink,
+        avatar: avatarLink,
       };
 
       const response = await api.post("users", userData);
@@ -290,10 +290,10 @@ export default function SignUp() {
             }}
           >
             <ButtonLink href="/login">
-              <ButtonText>VOLTAR</ButtonText>
+              <ButtonText>Voltar</ButtonText>
             </ButtonLink>
             <Button type="submit">
-              <ButtonText>SALVAR</ButtonText>
+              <ButtonText>Salvar</ButtonText>
             </Button>
           </div>
         </FormContainer>

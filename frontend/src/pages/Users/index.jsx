@@ -1,35 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { api } from "../../services/api";
-import { ToastNotifier } from "../../helpers/ToastNotifier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import "./styles.css";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import EditUserModal from "../../components/UsersModals/EditUserModal";
+import DeleteUserModal from "../../components/UsersModals/DeleteUserModal";
+import "./styles.css";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [selectedRow, setSelectedRow] = useState();
+  const [isOpenEditUserModal, setIsOpenEditUserModal] = useState(false);
+  const [isOpenDeleteUserModal, setIsOpenDeleteUserModal] = useState(false);
 
   useEffect(() => {
-    getUsers();
+    callListAllUsers();
   }, []);
 
-  const getUsers = async () => {
+  const callListAllUsers = async () => {
     const response = await api.get("/users");
-
-    console.log(response.data);
 
     setUsers(response.data);
   };
-
-  console.log(selectedRow);
 
   return (
     <>
       <Header />
       <Footer />
+      {isOpenEditUserModal ? (
+        <EditUserModal
+          selectedRow={selectedRow}
+          setIsOpenEditUserModal={setIsOpenEditUserModal}
+          callListAllUsers={callListAllUsers}
+        />
+      ) : (
+        false
+      )}
+      {isOpenDeleteUserModal ? (
+        <DeleteUserModal
+          selectedRow={selectedRow}
+          setIsOpenDeleteUserModal={setIsOpenDeleteUserModal}
+          callListAllUsers={callListAllUsers}
+        />
+      ) : (
+        false
+      )}
       {users.map((item, index) => {
         return (
           <tr key={index} onClick={() => setSelectedRow(item)}>
@@ -42,10 +59,9 @@ export default function Users() {
             </td>
             <td>
               <Button
-                className="actions-button"
                 variant="contained"
                 color="primary"
-                href="#contained-buttons"
+                onClick={() => setIsOpenEditUserModal(true)}
               >
                 Alterar
                 <FontAwesomeIcon
@@ -55,10 +71,9 @@ export default function Users() {
                 />
               </Button>
               <Button
-                className="actions-button"
                 variant="contained"
                 color="error"
-                href="#contained-buttons"
+                onClick={() => setIsOpenDeleteUserModal(true)}
               >
                 Excluir
                 <FontAwesomeIcon

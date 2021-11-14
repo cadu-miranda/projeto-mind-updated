@@ -14,7 +14,9 @@ export default function Header() {
 
   useEffect(() => {
     getUserName();
+  }, []);
 
+  useEffect(() => {
     const hours = new Date().getHours();
 
     if (hours < 12) setMessage("Bom dia");
