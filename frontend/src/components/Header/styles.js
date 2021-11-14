@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const DivHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  display: block;
   background: #0f2027;
   background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
   background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
-  padding: 16px 10px;
+  min-height: 110px;
   box-shadow: var(--shadow);
   text-align: center;
   color: white;
+  position: relative;
 `;
 
 export const Text = styled.h1`
+  position: relative;
+  top: 40px;
   font-size: 1.8em;
 `;
 
@@ -23,9 +24,11 @@ export const Link = styled.a`
 `;
 
 export const Button = styled.button`
+  position: relative;
+  left: 50rem;
   background: #fff;
   color: #0f2027;
-  padding: 14px 0;
+  padding: 14px 0px;
   border: none;
   cursor: pointer;
   width: 130px;
@@ -33,6 +36,9 @@ export const Button = styled.button`
   transition: 0.4s;
 
   &:hover {
-    opacity: 0.8;
+    background: #0f2027;
+    color: #fff;
+    transition: 500ms;
+    border: 1px solid #fff;
   }
 `;

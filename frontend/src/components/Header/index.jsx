@@ -54,9 +54,9 @@ export default function Header() {
 
   return (
     <>
-      <DivHeader className="header">
+      <DivHeader>
         {userToken ? (
-          <Text>
+          <Text hasPositionTop>
             {message}, {name}!
           </Text>
         ) : (
@@ -64,13 +64,9 @@ export default function Header() {
             <Link href="/">Projeto - Mind Consulting</Link>
           </Text>
         )}
+
         {userToken ? (
           <>
-            <div
-              style={{
-                display: "flex",
-              }}
-            />
             <Button onClick={handleLogout}>Sair</Button>
           </>
         ) : (
