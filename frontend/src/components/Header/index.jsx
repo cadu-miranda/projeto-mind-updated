@@ -1,14 +1,14 @@
 import React from "react";
-import "./styles.css";
+import { DivHeader, Text, Link } from "./styles.js";
 
 export default function Header() {
   return (
     <>
-      <header className="header">
-        <h1>
-          <a href="/">Projeto - Mind Consulting</a>
-        </h1>
-      </header>
+      <DivHeader className="header">
+        <Text>
+          <Link href="/">Projeto - Mind Consulting</Link>
+        </Text>
+      </DivHeader>
     </>
   );
 }

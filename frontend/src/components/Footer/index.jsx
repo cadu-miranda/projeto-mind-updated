@@ -1,12 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import "./styles.css";
+import { DivFooter, Text } from "./styles.js";
 
 export default function Footer() {
   return (
     <>
-      <footer className="footer">
+      <DivFooter>
         Desenvolvido com{" "}
         <FontAwesomeIcon
           icon={faHeart}
@@ -14,8 +14,8 @@ export default function Footer() {
           fixedWidth
           transform="left-2"
         />
-        por <strong>Carlos Eduardo Miranda</strong>
-      </footer>
+        por <Text>Carlos Eduardo Miranda</Text>
+      </DivFooter>
     </>
   );
 }

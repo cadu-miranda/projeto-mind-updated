@@ -77,13 +77,18 @@ export default function SignUp() {
         clearFields();
 
         ToastNotifier({
-          toastMessage: "Usuário logado com sucesso!",
+          toastMessage: "Usuário criado com sucesso!",
           toastType: "success",
         });
-        history.push("/users");
+        history.push("/login");
       }
     } catch (e) {
       console.log(e);
+
+      ToastNotifier({
+        toastMessage: "Erro ao cadastrar o usuário!",
+        toastType: "error",
+      });
     }
   };
 
@@ -101,7 +106,9 @@ export default function SignUp() {
   };
 
   const handleCpfValidation = (value) => {
-    setIsValidCpf(validateCPF(value));
+    setIsValidCpf(
+      validateCPF(value.replace(".", "").replace(".", "").replace("-", ""))
+    );
   };
 
   return (
@@ -186,6 +193,7 @@ export default function SignUp() {
                 required
                 type="password"
                 placeholder="Digite sua senha"
+                minLength={8}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 id="signUpPassword"
@@ -205,6 +213,7 @@ export default function SignUp() {
                 type="password"
                 placeholder="Confirme sua senha"
                 name="password-confirm"
+                minLength={8}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
                 id="signUpConfirmPassword"
               />

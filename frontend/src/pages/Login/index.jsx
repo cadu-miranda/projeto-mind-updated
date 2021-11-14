@@ -3,9 +3,23 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { api } from "../../services/api";
 import { useHistory } from "react-router";
+import { ToastNotifier } from "../../helpers/ToastNotifier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import "./styles.css";
+import {
+  Form,
+  Text,
+  Icon,
+  FormContainer,
+  Container,
+  Label,
+  StrongText,
+  CustomWrapper,
+  Input,
+  Button,
+  ButtonText,
+  ButtonLink,
+} from "./styles";
 
 export default function Login() {
   let history = useHistory();
@@ -23,9 +37,22 @@ export default function Login() {
 
       console.log(response);
 
-      if (response.status === 200) history.push("/users");
+      if (response.status === 200) {
+        history.push("/users");
+        localStorage.setItem("token", response.data.token);
+
+        ToastNotifier({
+          toastMessage: "Usuário logado com sucesso!",
+          toastType: "success",
+        });
+      }
     } catch (e) {
       console.log(e);
+
+      ToastNotifier({
+        toastMessage: "Erro ao fazer o login!",
+        toastType: "error",
+      });
     }
   };
 
@@ -33,58 +60,67 @@ export default function Login() {
     <>
       <Header />
       <Footer />
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <div className="icon">
+      <Form onSubmit={handleSubmit}>
+        <Text>Login</Text>
+        <Icon>
           <FontAwesomeIcon icon={faUserCircle} />
-        </div>
-        <div className="form-container">
-          <div className="container">
-            <label htmlFor="email">
-              <strong>Login</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
+        </Icon>
+        <FormContainer>
+          <Container>
+            <Label htmlFor="email">
+              <StrongText>Login</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
                 onChange={(e) => setEmailCpf(e.target.value)}
                 required
                 type="text"
                 placeholder="Digite seu e-mail ou CPF"
                 name="email"
-                id="loginInput"
               />
               <FontAwesomeIcon
                 icon={faUser}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="password">
-              <strong>Senha</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>Senha</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 type="password"
                 placeholder="Digite sua senha"
+                minLength={8}
                 name="password"
-                id="passwordInput"
               />
               <FontAwesomeIcon
                 icon={faKey}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-          </div>
-          <button type="submit" className="button">
-            <strong>ENTRAR</strong>
-          </button>
-          <a href="/signup" className="button">
-            <strong>REGISTRAR-SE</strong>
-          </a>
-        </div>
-      </form>
+            </CustomWrapper>
+          </Container>
+          <Button type="submit">
+            <ButtonText>ENTRAR</ButtonText>
+          </Button>
+          <ButtonLink href="/signup">
+            <ButtonText>REGISTRAR-SE</ButtonText>
+          </ButtonLink>
+        </FormContainer>
+      </Form>
     </>
   );
 }
