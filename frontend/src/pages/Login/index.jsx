@@ -72,11 +72,11 @@ export default function Login() {
             </Label>
             <CustomWrapper>
               <Input
-                onChange={(e) => setEmailCpf(e.target.value)}
-                required
-                type="text"
                 placeholder="Digite seu e-mail ou CPF"
+                onChange={(e) => setEmailCpf(e.target.value)}
+                type="text"
                 name="email"
+                required
               />
               <FontAwesomeIcon
                 icon={faUser}
@@ -94,12 +94,12 @@ export default function Login() {
             </Label>
             <CustomWrapper>
               <Input
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                type="password"
                 placeholder="Digite sua senha"
-                minLength={8}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
                 name="password"
+                minLength={8}
+                required
               />
               <FontAwesomeIcon
                 icon={faKey}

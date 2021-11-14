@@ -14,9 +14,9 @@ export const Text = styled.h1`
 `;
 
 export const Icon = styled.div`
-  font-size: 110px;
   display: flex;
   justify-content: center;
+  font-size: 110px;
   color: #4286f4;
   margin-top: 25px;
 `;
@@ -49,12 +49,12 @@ export const CustomWrapper = styled.div`
 `;
 
 export const Input = styled.input`
+  display: inline-block;
+  box-sizing: border-box;
   width: 100%;
   padding: 16px 8px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box;
   transition: 0.2s;
   border-radius: 5px;
   margin-bottom: 10px;
