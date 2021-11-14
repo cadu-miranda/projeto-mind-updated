@@ -3,6 +3,9 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { api } from "../../services/api";
 import { useHistory } from "react-router";
+import { formatCPF } from "../../utils/formatter";
+import { validateCPF, validateEmail } from "../../utils/validator";
+import { ToastNotifier } from "../../helpers/ToastNotifier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAt,
@@ -24,12 +27,39 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [avatarLink, setAvatarLink] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidCPF, setIsValidCpf] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      if (password !== passwordConfirmation) return;
+      if (password !== passwordConfirmation) {
+        ToastNotifier({
+          toastMessage: "Senhas não conferem. Tente novamente!",
+          toastType: "error",
+        });
+
+        return;
+      }
+
+      if (!isValidEmail) {
+        ToastNotifier({
+          toastMessage: "E-mail inválido. Tente novamente!",
+          toastType: "error",
+        });
+
+        return;
+      }
+
+      if (!isValidCPF) {
+        ToastNotifier({
+          toastMessage: "CPF inválido. Tente novamente!",
+          toastType: "error",
+        });
+
+        return;
+      }
 
       const userData = {
         name,
@@ -41,13 +71,17 @@ export default function SignUp() {
 
       const response = await api.post("users", userData);
 
+      console.log(response);
+
       if (response.status === 201) {
         clearFields();
-        alert("Usuário criado!");
+
+        ToastNotifier({
+          toastMessage: "Usuário logado com sucesso!",
+          toastType: "success",
+        });
         history.push("/users");
       }
-
-      console.log(response);
     } catch (e) {
       console.log(e);
     }
@@ -60,6 +94,14 @@ export default function SignUp() {
     setPassword("");
     setPasswordConfirmation("");
     setAvatarLink("");
+  };
+
+  const handleEmailValidation = (value) => {
+    setIsValidEmail(validateEmail(value));
+  };
+
+  const handleCpfValidation = (value) => {
+    setIsValidCpf(validateCPF(value));
   };
 
   return (
@@ -98,10 +140,15 @@ export default function SignUp() {
               <input
                 required
                 type="text"
-                maxLength="11"
+                minLength={14}
+                maxLength={14}
+                value={formatCPF(cpf)}
                 placeholder="Digite seu CPF"
                 name="cpf"
-                onChange={(e) => setCpf(e.target.value)}
+                onChange={(e) => {
+                  setCpf(e.target.value);
+                  handleCpfValidation(e.target.value);
+                }}
                 id="signUpCPF"
               />
               <FontAwesomeIcon
@@ -119,7 +166,10 @@ export default function SignUp() {
                 type="email"
                 placeholder="Digite seu e-mail"
                 name="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  handleEmailValidation(e.target.value);
+                }}
                 id="signUpEmail"
               />
               <FontAwesomeIcon
