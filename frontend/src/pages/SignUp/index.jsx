@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {
   Form,
-  Text,
+  Title,
   Icon,
   FormContainer,
   Container,
@@ -129,7 +129,7 @@ export default function SignUp() {
       <Header />
       <Footer />
       <Form onSubmit={handleSubmit}>
-        <Text>Cadastro</Text>
+        <Title>Cadastro</Title>
         <Icon>
           <FontAwesomeIcon icon={faUserCircle} />
         </Icon>
@@ -143,7 +143,7 @@ export default function SignUp() {
                 placeholder="Digite o seu nome"
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                name="text"
+                name="name"
                 value={name}
                 required
               />
@@ -265,8 +265,8 @@ export default function SignUp() {
               <Input
                 placeholder="Cole aqui o link do seu avatar"
                 onChange={(e) => setAvatarLink(e.target.value)}
-                type="email"
-                name="email"
+                type="url"
+                name="avatarLink"
                 required
               />
               <FontAwesomeIcon
@@ -281,12 +281,21 @@ export default function SignUp() {
               />
             </CustomWrapper>
           </Container>
-          <Button type="submit">
-            <ButtonText>ENTRAR</ButtonText>
-          </Button>
-          <ButtonLink href="/signup">
-            <ButtonText>REGISTRAR-SE</ButtonText>
-          </ButtonLink>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "36px",
+            }}
+          >
+            <ButtonLink href="/login">
+              <ButtonText>VOLTAR</ButtonText>
+            </ButtonLink>
+            <Button type="submit">
+              <ButtonText>SALVAR</ButtonText>
+            </Button>
+          </div>
         </FormContainer>
       </Form>
     </>

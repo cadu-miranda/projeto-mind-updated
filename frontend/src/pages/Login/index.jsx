@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import {
   Form,
-  Text,
+  Title,
   Icon,
   FormContainer,
   Container,
@@ -20,26 +20,36 @@ import {
   ButtonText,
   ButtonLink,
 } from "./styles";
+import { formatCPF } from "../../utils/formatter";
 
 export default function Login() {
   let history = useHistory();
 
   const [emailCpf, setEmailCpf] = useState("");
   const [password, setPassword] = useState("");
+  const [isCpfSend, setIsCpfSend] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const userData = { email: emailCpf, password };
+      const userData = isCpfSend
+        ? { cpf: emailCpf, password }
+        : { email: emailCpf, password };
 
       const response = await api.post("/login", userData);
 
+      const userToken = response.data.token;
+      const accessLevel = response.data.user.acess_level;
+
       console.log(response);
 
-      if (response.status === 200) {
+      if (userToken && response.status === 200) {
+        localStorage.setItem("user_id", response.data.user.id);
+        localStorage.setItem("user_type", accessLevel);
+        localStorage.setItem("user_token", userToken);
+
         history.push("/users");
-        localStorage.setItem("token", response.data.token);
 
         ToastNotifier({
           toastMessage: "Usuário logado com sucesso!",
@@ -50,7 +60,7 @@ export default function Login() {
       console.log(e);
 
       ToastNotifier({
-        toastMessage: "Erro ao fazer o login!",
+        toastMessage: "Erro ao fazer login!",
         toastType: "error",
       });
     }
@@ -61,21 +71,29 @@ export default function Login() {
       <Header />
       <Footer />
       <Form onSubmit={handleSubmit}>
-        <Text>Login</Text>
+        <Title>Login</Title>
         <Icon>
           <FontAwesomeIcon icon={faUserCircle} />
         </Icon>
         <FormContainer>
           <Container>
             <Label htmlFor="email">
-              <StrongText>Login</StrongText>
+              <StrongText>{isCpfSend ? "CPF" : "E-mail"}</StrongText>
+              <input
+                type="checkbox"
+                onChange={(e) => setIsCpfSend(e.target.checked)}
+                style={{ marginLeft: "8px" }}
+              />
             </Label>
             <CustomWrapper>
               <Input
-                placeholder="Digite seu e-mail ou CPF"
+                placeholder={`Digite seu ${isCpfSend ? "CPF" : "e-mail"}`}
                 onChange={(e) => setEmailCpf(e.target.value)}
                 type="text"
-                name="email"
+                name="emailCpf"
+                value={isCpfSend ? formatCPF(emailCpf) : emailCpf}
+                minLength={isCpfSend ? 14 : false}
+                maxLength={isCpfSend ? 14 : false}
                 required
               />
               <FontAwesomeIcon
@@ -99,6 +117,7 @@ export default function Login() {
                 type="password"
                 name="password"
                 minLength={8}
+                value={password}
                 required
               />
               <FontAwesomeIcon
@@ -117,7 +136,7 @@ export default function Login() {
             <ButtonText>ENTRAR</ButtonText>
           </Button>
           <ButtonLink href="/signup">
-            <ButtonText>REGISTRAR-SE</ButtonText>
+            <ButtonText>CADASTRE-SE</ButtonText>
           </ButtonLink>
         </FormContainer>
       </Form>

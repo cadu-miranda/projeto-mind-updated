@@ -6,9 +6,9 @@ export const Form = styled.form`
   transition: 0.4s;
 `;
 
-export const Text = styled.h1`
+export const Title = styled.h1`
   text-align: center;
-  font-size: 18;
+  font-size: 28px;
   margin-top: 5px;
   transition: 0.4s;
 `;
@@ -52,7 +52,7 @@ export const Input = styled.input`
   display: inline-block;
   box-sizing: border-box;
   width: 100%;
-  padding: 16px 8px;
+  padding: 16px 36px;
   margin: 8px 0;
   border: 1px solid #ccc;
   transition: 0.2s;
@@ -61,7 +61,6 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
   }
 `;
 
