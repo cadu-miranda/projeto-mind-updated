@@ -39,12 +39,27 @@ export default function SignUp() {
         avatarLink,
       };
 
-      const response = await api("users", userData);
+      const response = await api.post("users", userData);
+
+      if (response.status === 201) {
+        clearFields();
+        alert("Usuário criado!");
+        history.push("/users");
+      }
 
       console.log(response);
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const clearFields = () => {
+    setName("");
+    setCpf("");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirmation("");
+    setAvatarLink("");
   };
 
   return (
@@ -156,7 +171,7 @@ export default function SignUp() {
               <input
                 required
                 type="text"
-                placeholder="Cole aqui seu avatar"
+                placeholder="Cole aqui um link para uma imagem"
                 name="avatar"
                 onChange={(e) => setAvatarLink(e.target.value)}
                 id="signUpConfirmPassword"
