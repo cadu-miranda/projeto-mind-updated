@@ -16,7 +16,20 @@ import {
   faUser,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import "./styles.css";
+import {
+  Form,
+  Text,
+  Icon,
+  FormContainer,
+  Container,
+  Label,
+  StrongText,
+  CustomWrapper,
+  Input,
+  Button,
+  ButtonText,
+  ButtonLink,
+} from "./styles";
 
 export default function SignUp() {
   let history = useHistory();
@@ -115,141 +128,167 @@ export default function SignUp() {
     <>
       <Header />
       <Footer />
-      <form onSubmit={handleSubmit}>
-        <h1>Cadastro</h1>
-        <div className="icon">
+      <Form onSubmit={handleSubmit}>
+        <Text>Cadastro</Text>
+        <Icon>
           <FontAwesomeIcon icon={faUserCircle} />
-        </div>
-        <div className="form-container">
-          <div className="container">
-            <label htmlFor="name">
-              <strong>Nome Completo</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="text"
-                placeholder="Digite seu Nome Completo"
-                name="name"
+        </Icon>
+        <FormContainer>
+          <Container>
+            <Label htmlFor="email">
+              <StrongText>Nome</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Digite o seu nome"
                 onChange={(e) => setName(e.target.value)}
-                id="signUpName"
+                type="text"
+                name="text"
+                value={name}
+                required
               />
               <FontAwesomeIcon
                 icon={faUser}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="cpf">
-              <strong>CPF</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="text"
-                minLength={14}
-                maxLength={14}
-                value={formatCPF(cpf)}
-                placeholder="Digite seu CPF"
-                name="cpf"
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>CPF</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Digite o seu CPF"
                 onChange={(e) => {
                   setCpf(e.target.value);
                   handleCpfValidation(e.target.value);
                 }}
-                id="signUpCPF"
+                type="text"
+                name="cpf"
+                minLength={14}
+                maxLength={14}
+                value={formatCPF(cpf)}
+                required
               />
               <FontAwesomeIcon
                 icon={faIdCard}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="email">
-              <strong>E-mail</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="email"
-                placeholder="Digite seu e-mail"
-                name="email"
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>E-mail</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Digite o seu e-mail"
                 onChange={(e) => {
                   setEmail(e.target.value);
                   handleEmailValidation(e.target.value);
                 }}
-                id="signUpEmail"
+                type="email"
+                name="email"
+                value={email}
+                required
               />
               <FontAwesomeIcon
                 icon={faAt}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="password">
-              <strong>Senha</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="password"
-                placeholder="Digite sua senha"
-                minLength={8}
-                name="password"
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>Senha</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Digite a sua senha"
                 onChange={(e) => setPassword(e.target.value)}
-                id="signUpPassword"
+                type="password"
+                name="password"
+                minLength={8}
+                required
               />
               <FontAwesomeIcon
                 icon={faKey}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="password-confirm">
-              <strong>Confirmação de senha</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="password"
-                placeholder="Confirme sua senha"
-                name="password-confirm"
-                minLength={8}
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>Confirmação de Senha</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Confirme a sua senha"
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
-                id="signUpConfirmPassword"
+                type="password"
+                name="passwordConfirmation"
+                minLength={8}
+                required
               />
               <FontAwesomeIcon
                 icon={faCheckCircle}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-            <label htmlFor="avatar">
-              <strong>Avatar</strong>
-            </label>
-            <div className="custom-wrapper">
-              <input
-                required
-                type="text"
-                placeholder="Cole aqui um link para uma imagem"
-                name="avatar"
+            </CustomWrapper>
+            <Label htmlFor="password">
+              <StrongText>Avatar</StrongText>
+            </Label>
+            <CustomWrapper>
+              <Input
+                placeholder="Cole aqui o link do seu avatar"
                 onChange={(e) => setAvatarLink(e.target.value)}
-                id="signUpConfirmPassword"
+                type="email"
+                name="email"
+                required
               />
               <FontAwesomeIcon
                 icon={faPortrait}
-                className="input-icon"
+                style={{
+                  position: "absolute",
+                  left: "8px",
+                  color: "#0f2027",
+                  top: "calc(50% - 0.5em)",
+                }}
                 transform="up-2 right-5"
               />
-            </div>
-          </div>
-          <a href="/" className="button">
-            <strong>VOLTAR</strong>
-          </a>
-          <button type="submit" className="button">
-            <strong>REGISTRAR-SE</strong>
-          </button>
-        </div>
-      </form>
+            </CustomWrapper>
+          </Container>
+          <Button type="submit">
+            <ButtonText>ENTRAR</ButtonText>
+          </Button>
+          <ButtonLink href="/signup">
+            <ButtonText>REGISTRAR-SE</ButtonText>
+          </ButtonLink>
+        </FormContainer>
+      </Form>
     </>
   );
 }
