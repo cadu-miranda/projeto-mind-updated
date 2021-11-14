@@ -1,38 +1,20 @@
 import React from 'react'
-import UserTable from '../src/components/UserTable/UserTable'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import SignUp from '../../frontend/src/components/SignUp/SignUp'
-import Login from '../../frontend/src/components/Login/Login'
+import Users from './pages/Users'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
 import { Switch, BrowserRouter, Route, Redirect } from 'react-router-dom'
 
-function App() {
+export default function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
-          <Route exact path="/users">
-            <Header />
-            <UserTable />
-            <Footer />
-          </Route>
-          <Route exact path="/signup">
-            <Header />
-            <SignUp />
-            <Footer />
-          </Route>
-          <Route exact path="/login">
-            <Header />
-            <Login />
-            <Footer />
-          </Route>
+          <Route exact path="/"><Redirect to="/login" /></Route>
+          <Route exact path="/signup" exact component={SignUp} />
+          <Route exact path="/login" exact component={Login} />
+          <Route exact path="/users" exact component={Users} />
         </Switch>
       </BrowserRouter>
     </>
   )
 }
-
-export default App

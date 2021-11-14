@@ -13,17 +13,22 @@ import {
   faUser,
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
-import "./UserTable.css";
+import "./styles.css";
 
-export default function UserTable() {
+export default function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    api.get("/users").then((res) => {
-      setUsers(res.data);
-      console.log(res.data);
-    });
+    getUsers();
   }, []);
+
+  const getUsers = () => {
+    const response = api.get("/users");
+
+    console.log(response.data);
+
+    setUsers(response.data);
+  };
 
   return (
     <>
@@ -150,7 +155,7 @@ export default function UserTable() {
           <strong>CANCELAR</strong>
         </a>
       </div>
-      {users.map((u) => (
+      {users.map((item, index) => (
         <table id="users">
           <thead>
             <tr>
@@ -161,22 +166,22 @@ export default function UserTable() {
               <th>Avatar</th>
               <th>Ações</th>
             </tr>
-            <tr>
-              <td>{u.id}</td>
-              <td>{u.name}</td>
-              <td>{u.email}</td>
-              <td>{u.cpf}</td>
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td>{item.name}</td>
+              <td>{item.email}</td>
+              <td>{item.cpf}</td>
               <td>
-                <img src={u.avatar} alt="Avatar" title="Avatar" />
+                <img src={item.avatar} alt="Avatar" title="Avatar" />
               </td>
               <td>
                 <Button
                   onClick={() => {
-                    fetch(`http://localhost:3333/users/${u.id}`, {
+                    fetch(`http://localhost:3333/users/${item.id}`, {
                       method: "put",
                     });
 
-                    console.log("alterar " + u.id);
+                    console.log("alterar " + item.id);
                   }}
                   className="actions-button"
                   variant="contained"
@@ -192,7 +197,7 @@ export default function UserTable() {
                 </Button>
                 <Button
                   onClick={() => {
-                    fetch(`http://localhost:3333/users/${u.id}`, {
+                    fetch(`http://localhost:3333/users/${item.id}`, {
                       method: "delete",
                     });
                   }}
