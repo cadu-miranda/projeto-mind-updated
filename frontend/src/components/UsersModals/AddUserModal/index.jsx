@@ -11,6 +11,7 @@ import {
   faKey,
   faPortrait,
   faUser,
+  faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   MainContainer,
@@ -28,19 +29,16 @@ import {
   ButtonText,
 } from "./styles";
 
-export default function EditUserModal({
-  selectedRow,
-  setIsOpenEditUserModal,
+export default function AddUserModal({
+  setIsOpenAddUserModal,
   callListAllUsers,
 }) {
-  const [name, setName] = useState(selectedRow.name);
-  const [cpf, setCpf] = useState(selectedRow.cpf);
-  const [email, setEmail] = useState(selectedRow.email);
-  const [password, setPassword] = useState(selectedRow.password);
-  const [passwordConfirmation, setPasswordConfirmation] = useState(
-    selectedRow.password
-  );
-  const [avatarLink, setAvatarLink] = useState(selectedRow.avatar);
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [avatarLink, setAvatarLink] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidCPF, setIsValidCpf] = useState(true);
 
@@ -83,16 +81,16 @@ export default function EditUserModal({
         avatar: avatarLink,
       };
 
-      const response = await api.put(`/users/${selectedRow.id}`, userData);
+      const response = await api.post("/users", userData);
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         clearFields();
 
         ToastNotifier({
-          toastMessage: "Usuário editado com sucesso!",
+          toastMessage: "Usuário criado com sucesso!",
           toastType: "success",
         });
-        setIsOpenEditUserModal(false);
+        setIsOpenAddUserModal(false);
         callListAllUsers();
       }
     } catch (e) {
@@ -125,7 +123,7 @@ export default function EditUserModal({
   };
 
   const handleCloseModal = (e) => {
-    if (e.keyCode === 27) setIsOpenEditUserModal(false);
+    if (e.keyCode === 27) setIsOpenAddUserModal(false);
   };
 
   document.addEventListener("keydown", handleCloseModal);
@@ -135,16 +133,9 @@ export default function EditUserModal({
       <MainContainer onKeyDown={handleCloseModal}>
         <ModalForm>
           <Form onSubmit={handleSubmit}>
-            <Title>Editar Usuário</Title>
+            <Title>Adicionar Usuário</Title>
             <Icon>
-              <img
-                src={selectedRow.avatar}
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                }}
-              />
+              <FontAwesomeIcon icon={faUserCircle} />
             </Icon>
             <FormContainer>
               <Container>
@@ -304,7 +295,7 @@ export default function EditUserModal({
                 }}
               >
                 <Button type="submit">
-                  <ButtonText>Atualizar</ButtonText>
+                  <ButtonText>Salvar</ButtonText>
                 </Button>
               </div>
             </FormContainer>

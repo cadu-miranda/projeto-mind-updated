@@ -20,6 +20,9 @@ export const SidebarMain = styled.div`
 `;
 
 export const DivLogo = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 110px;
   width: 100%;
   cursor: pointer;
@@ -27,9 +30,8 @@ export const DivLogo = styled(Link)`
 `;
 
 export const Logo = styled.img`
-  border-radius: 0%;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `;
 
@@ -44,7 +46,7 @@ export const DivContent = styled(Link)`
   text-decoration: none;
 
   &:focus {
-    border-right: 5px solid #254552;
+    border-right: 5px solid #000;
   }
 `;
 
