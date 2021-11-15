@@ -16,7 +16,6 @@ export const SidebarMain = styled.div`
   min-width: 20vw;
   min-height: 100vh;
   background-color: #fff;
-  border-right: 1px solid #254552;
 `;
 
 export const DivLogo = styled(Link)`

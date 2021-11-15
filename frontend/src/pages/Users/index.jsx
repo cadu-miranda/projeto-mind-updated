@@ -236,6 +236,7 @@ export default function Users() {
                     style={{
                       cursor: "pointer",
                       marginRight: "20px",
+                      marginTop: "12px",
                       fontSize: "18px",
                     }}
                   />

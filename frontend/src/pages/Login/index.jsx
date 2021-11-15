@@ -5,7 +5,13 @@ import { api } from "../../services/api";
 import { useHistory } from "react-router";
 import { ToastNotifier } from "../../helpers/ToastNotifier";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faKey, faUser, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faKey,
+  faUser,
+  faUserCircle,
+  faToggleOff,
+  faToggleOn,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Form,
   Title,
@@ -78,13 +84,19 @@ export default function Login() {
         <FormContainer>
           <Container>
             <Label htmlFor="email">
-              <StrongText>{isCpfSend ? "CPF" : "E-mail"}</StrongText>
-              <input
-                type="checkbox"
-                onChange={(e) => setIsCpfSend(e.target.checked)}
-                style={{ marginLeft: "8px" }}
-              />
+              <Icon>
+                <FontAwesomeIcon
+                  icon={isCpfSend ? faToggleOn : faToggleOff}
+                  onClick={() => setIsCpfSend(!isCpfSend)}
+                  style={{
+                    cursor: "pointer",
+                    width: "50px",
+                    height: "50px",
+                  }}
+                />
+              </Icon>
             </Label>
+            <StrongText>{isCpfSend ? "CPF" : "E-mail"}</StrongText>
             <CustomWrapper>
               <Input
                 placeholder={`Digite seu ${isCpfSend ? "CPF" : "e-mail"}`}
