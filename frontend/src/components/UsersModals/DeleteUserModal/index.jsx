@@ -54,20 +54,18 @@ export default function DeleteUserModal({
             <Title> Excluir Usuário</Title>
             <span
               style={{
-                color: "#fff",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             >
-              Tem certeza que deseja excluir o usuário {selectedRow.name}?
+              Tem certeza que deseja excluir usuário {selectedRow.name}?
             </span>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#fff",
                 margin: "20px 0px",
               }}
             >

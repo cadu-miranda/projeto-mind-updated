@@ -44,6 +44,15 @@ export default function EditUserModal({
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidCPF, setIsValidCpf] = useState(true);
 
+  const clearFields = () => {
+    setName("");
+    setCpf("");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirmation("");
+    setAvatarLink("");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -103,15 +112,6 @@ export default function EditUserModal({
         toastType: "error",
       });
     }
-  };
-
-  const clearFields = () => {
-    setName("");
-    setCpf("");
-    setEmail("");
-    setPassword("");
-    setPasswordConfirmation("");
-    setAvatarLink("");
   };
 
   const handleEmailValidation = (value) => {

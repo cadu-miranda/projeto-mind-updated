@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   margin-left: 20vw;
-  padding: 36px 40px;
+  padding: 120px 40px;
   background-color: #e5e5e5;
+  height: 85vh;
 `;
 
 export const TableContainer = styled.table`
@@ -14,13 +13,14 @@ export const TableContainer = styled.table`
   flex-direction: column;
   margin-top: 10px;
   width: 100%;
+  height: 100%;
   border-radius: 10px;
   background-color: #fff;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
-  margin-top: 14px;
+  margin-top: 28px;
   margin-left: 60px;
 `;
 
@@ -67,6 +67,7 @@ export const IconContainer = styled.div`
 `;
 
 export const TableContent = styled.div`
+  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

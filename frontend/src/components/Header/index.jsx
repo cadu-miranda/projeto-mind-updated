@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { ToastNotifier } from "../../helpers/ToastNotifier";
 import { api } from "../../services/api";
+import LogoutModal from "../LogoutModal";
 import { DivHeader, Text, Link, Button } from "./styles.js";
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
   const [userId] = useState(localStorage.getItem("user_id"));
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
+  const [isOpenLogoutModal, setIsOpenLogoutModal] = useState(false);
 
   useEffect(() => {
     getUserName();
@@ -54,6 +56,14 @@ export default function Header() {
 
   return (
     <>
+      {isOpenLogoutModal ? (
+        <LogoutModal
+          handleLogout={handleLogout}
+          setIsOpenLogoutModal={setIsOpenLogoutModal}
+        />
+      ) : (
+        false
+      )}
       <DivHeader>
         {userToken ? (
           <Text hasPositionTop>
@@ -67,7 +77,7 @@ export default function Header() {
 
         {userToken ? (
           <>
-            <Button onClick={handleLogout}>Sair</Button>
+            <Button onClick={() => setIsOpenLogoutModal(true)}>Sair</Button>
           </>
         ) : (
           false

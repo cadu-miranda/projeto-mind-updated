@@ -15,6 +15,7 @@ export const MainContainer = styled.div`
 `;
 
 export const ModalForm = styled.div`
+
   background-color: #fff;
   border-radius: 8px;
 `;

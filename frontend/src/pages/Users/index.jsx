@@ -7,8 +7,8 @@ import {
   faEdit,
   faTrash,
   faSearch,
-  faArrowLeft,
-  faArrowRight,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
@@ -203,7 +203,7 @@ export default function Users() {
                   icon={faSearch}
                   color="#24424d"
                   style={{
-                    fontSize: "20px",
+                    fontSize: "18px",
                   }}
                 />
               </Icon>
@@ -225,6 +225,7 @@ export default function Users() {
                     style={{
                       cursor: "pointer",
                       marginRight: "20px",
+                      marginTop: "12px",
                       fontSize: "18px",
                     }}
                   />
@@ -243,10 +244,10 @@ export default function Users() {
             </IconContainer>
           </TableHeader>
           <TableContent>
-            {!users.length ? (
+            {!listPerPage.length ? (
               <Text>Nenhum usuário encontrado. Tente novamente!</Text>
             ) : (
-              users.map((item, index) => {
+              listPerPage.map((item, index) => {
                 return (
                   <TableRow key={index} onClick={() => setSelectedRow(item)}>
                     <TableColumn>
@@ -260,6 +261,9 @@ export default function Users() {
                         maxWidth: "230px",
                       }}
                     >
+                      <Text isRed isBold hasMarginBottom>
+                        Nome
+                      </Text>
                       <Text isBold hasMarginTop>
                         {item.name}
                       </Text>
@@ -324,11 +328,12 @@ export default function Users() {
                   onClick={() => onPageChange(page - 1)}
                 >
                   <FontAwesomeIcon
-                    icon={faArrowLeft}
+                    icon={faChevronLeft}
                     color="#24424d"
                     size={22}
                     style={{
                       cursor: "pointer",
+                      marginRight: "8px",
                     }}
                   />
                   Voltar
@@ -364,11 +369,12 @@ export default function Users() {
                 >
                   Próximo
                   <FontAwesomeIcon
-                    icon={faArrowRight}
+                    icon={faChevronRight}
                     color="#24424d"
                     size={22}
                     style={{
                       cursor: "pointer",
+                      marginLeft: "8px",
                     }}
                   />
                 </Button>
