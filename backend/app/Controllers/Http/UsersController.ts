@@ -55,21 +55,28 @@ export default class UsersController {
 
   public async update({ request, response, params }: HttpContextContract) { // UPDATE
 
-    const { id } = params
-    const { name, email, password, cpf, avatar } = request.all()
-    const user = await User.findOrFail(id)
+    try {
 
-    user.merge({
-      name,
-      email,
-      password,
-      cpf,
-      avatar
-    })
+      const { id } = params
+      const { name, email, password, cpf, avatar } = request.all()
+      const user = await User.findOrFail(id)
 
-    user.save()
+      user.merge({
+        name,
+        email,
+        password,
+        cpf,
+        avatar
+      })
 
-    return response.json({ user })
+      await user.save()
+
+      return response.json({ user })
+
+    } catch (e) {
+
+      console.log(e)
+    }
   }
 
   public async destroy({ response, params }: HttpContextContract) { // DELETE
