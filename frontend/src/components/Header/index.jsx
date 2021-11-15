@@ -70,9 +70,7 @@ export default function Header() {
             {message}, {name}!
           </Text>
         ) : (
-          <Text>
-            <Link href="/">Projeto - Mind Consulting</Link>
-          </Text>
+          <Text>Projeto - Mind Consulting</Text>
         )}
 
         {userToken ? (

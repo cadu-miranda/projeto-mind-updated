@@ -5,7 +5,6 @@ export const MainContainer = styled.div`
   margin-left: 20vw;
   padding: 120px 40px;
   background-color: #e5e5e5;
-  height: 85vh;
 `;
 
 export const TableContainer = styled.table`

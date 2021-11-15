@@ -26,7 +26,7 @@ export default function Sidebar() {
                 <FontAwesomeIcon
                   icon={faUsers}
                   fixedWidth
-                  color="#254552"
+                  color="#24434f"
                   style={{
                     marginLeft: "30px",
                     fontSize: "28px",
@@ -38,7 +38,7 @@ export default function Sidebar() {
                 <FontAwesomeIcon
                   icon={faCogs}
                   fixedWidth
-                  color="#254552"
+                  color="#24434f"
                   style={{
                     marginLeft: "30px",
                     fontSize: "28px",
@@ -53,7 +53,7 @@ export default function Sidebar() {
                 <FontAwesomeIcon
                   icon={faUsers}
                   fixedWidth
-                  color="#254552"
+                  color="#24434f"
                   style={{
                     marginLeft: "30px",
                     fontSize: "28px",

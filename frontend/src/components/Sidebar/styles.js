@@ -16,6 +16,7 @@ export const SidebarMain = styled.div`
   min-width: 20vw;
   min-height: 100vh;
   background-color: #fff;
+  border-right: 1px solid #24434f;
 `;
 
 export const DivLogo = styled(Link)`
@@ -45,7 +46,7 @@ export const DivContent = styled(Link)`
   text-decoration: none;
 
   &:focus {
-    border-right: 5px solid #000;
+    border-right: 5px solid #24434f;
   }
 `;
 

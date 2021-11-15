@@ -15,7 +15,9 @@ export const MainContainer = styled.div`
 `;
 
 export const ModalForm = styled.div`
-  width: 500px;
+  width: 650px;
+  background-color: #fff;
+  border-radius: 8px;
 `;
 
 export const Form = styled.form`
@@ -26,7 +28,6 @@ export const Form = styled.form`
 
 export const Title = styled.h1`
   text-align: center;
-  color: #fff;
   font-size: 28px;
   margin-top: 5px;
   transition: 0.4s;
@@ -51,9 +52,7 @@ export const Label = styled.label`
   margin-top: 8px;
 `;
 
-export const StrongText = styled.strong`
-  color: #fff;
-`;
+export const StrongText = styled.strong``;
 
 export const CustomWrapper = styled.div`
   position: relative;

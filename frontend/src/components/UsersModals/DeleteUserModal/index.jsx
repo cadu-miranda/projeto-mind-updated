@@ -52,6 +52,19 @@ export default function DeleteUserModal({
         <ModalForm>
           <FormContainer>
             <Title> Excluir Usuário</Title>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "16px 0px",
+              }}
+            >
+              <img
+                src={selectedRow.avatar}
+                style={{ width: "60px", height: "60px", borderRadius: "30px" }}
+              />
+            </div>
             <span
               style={{
                 display: "flex",
